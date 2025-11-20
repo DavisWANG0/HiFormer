@@ -54,9 +54,9 @@
 
 | Task | Dataset Code | Dataset | Description |
 |------|--------------|---------|-------------|
-| **Low-Light Enhancement** | `lol4k` | LOL4K | Enhance low-light 4K images |
+| **Low-Light Enhancement** | `lol4k` | UHD-LOL4K | Enhance low-light 4K images |
 | **Low-Light Enhancement** | `uhd-ll` | UHD-LL | Enhance real-wolrd low-light UHD images |
-| **Deraining** | `rain4k` | 4K-Rain | Remove rain streaks from 4K images |
+| **Deraining** | `rain4k` | 4K-Rain13k | Remove rain streaks from 4K images |
 | **Deraining** | `uhd-rain` | UHD-Rain | Remove rain streaks from 4K images |
 | **Dehazing** | `uhd-haze` | UHD-Haze | Remove haze from UHD images |
 | **Deblurring** | `uhd-blur` | UHD-Blur | Remove blur from UHD images |
