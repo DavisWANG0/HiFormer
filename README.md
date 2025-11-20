@@ -97,8 +97,8 @@ HiFormer/
 │   ├── schedulers.py         # LR schedulers
 │   └── ...
 ├── train_hiformer.py         # Training script
-├── test_hiformer.py          # Testing script
-├── demo_hiformer.py          # Demo/verification
+├── test_hiformer.py          # Evaluation script (with metrics)
+├── demo_hiformer.py          # Demo script (inference only)
 ├── options_hiformer.py       # Configuration
 ├── train_hiformer.sh         # Training launcher
 ├── test_hiformer.sh          # Testing launcher
@@ -187,37 +187,67 @@ python train_hiformer.py \
 
 ## 🧪 Testing
 
-### Quick Test
+### Evaluation on Test Datasets
+
+For evaluating PSNR/SSIM metrics on test datasets with ground truth:
 
 ```bash
-# Test all tasks
-bash test_hiformer.sh
+# Test on UHD-Haze dataset
+python test_hiformer.py \
+    --valid_data_dir data/Test/UHD_haze/test/input/ \
+    --ckpt_path ckpt/hiformer/hiformer-epoch-499.ckpt \
+    --output_path output/
 
-# Or run directly
-python test_hiformer.py --mode 3 --ckpt_name hiformer-epoch-499.ckpt
+# Test on UHD-Rain dataset
+python test_hiformer.py \
+    --valid_data_dir data/Test/UHD_rain/test/input/ \
+    --ckpt_path ckpt/hiformer/hiformer-epoch-499.ckpt \
+    --output_path output/
+
+# Test on LOL4K dataset
+python test_hiformer.py \
+    --valid_data_dir data/Test/LOL4K/test/input/ \
+    --ckpt_path ckpt/hiformer/hiformer-epoch-499.ckpt \
+    --output_path output/
 ```
 
-### Test Modes
+### Demo: Generate Restored Images
+
+For generating restored images from degraded inputs (without ground truth):
 
 ```bash
-# Mode 0: Denoising only
-python test_hiformer.py --mode 0 --ckpt_name hiformer-epoch-499.ckpt
+# Process a directory of images
+python demo_hiformer.py \
+    --test_path test/input/ \
+    --output_path test/output/ \
+    --ckpt_path ckpt/hiformer/hiformer-epoch-499.ckpt
 
-# Mode 1: Deraining only
-python test_hiformer.py --mode 1 --ckpt_name hiformer-epoch-499.ckpt
-
-# Mode 2: Dehazing only
-python test_hiformer.py --mode 2 --ckpt_name hiformer-epoch-499.ckpt
+# Process with tiling (for very large images)
+python demo_hiformer.py \
+    --test_path test/input/ \
+    --output_path test/output/ \
+    --ckpt_path ckpt/hiformer/hiformer-epoch-499.ckpt \
+    --tile True \
+    --tile_size 512 \
+    --tile_overlap 32
 ```
 
 ### Custom Testing
 
-```bash
-python test_hiformer.py \
-    --ckpt_name hiformer-epoch-499.ckpt \
-    --dehaze_path /path/to/test/images/ \
-    --output_path results/
-```
+**test_hiformer.py** (for evaluation with metrics):
+- `--valid_data_dir`: Path to test input images (requires corresponding GT in `gt/` folder)
+- `--ckpt_path`: Path to checkpoint file
+- `--output_path`: Directory to save results
+- `--cuda`: GPU device ID (default: 0)
+
+**demo_hiformer.py** (for inference only):
+- `--test_path`: Path to input images (directory or single image)
+- `--output_path`: Directory to save restored images
+- `--ckpt_path`: Path to checkpoint file
+- `--tile`: Enable tiling for large images (default: False)
+- `--tile_size`: Tile size for tiling mode (default: 128)
+- `--tile_overlap`: Overlap between tiles (default: 32)
+- `--cuda`: GPU device ID (default: 0)
 
 ## 📊 Results
 
