@@ -1,4 +1,4 @@
-# Ultra-High-Definition Image Restoration via High Frequency Enhanced Transformer (T-CSVT 2025)
+# Ultra-High-Definition Image Restoration via High-Frequency Enhanced Transformer (T-CSVT 2025)
 
 [Chen Wu](https://github.com/5chen), [Ling Wang](https://daviswang0.github.io/), [Zhuoran Zheng](https://scholar.google.com.hk/citations?user=pXzPL-sAAAAJ&hl=zh-CN), [Weidong Jiang](https://xplorestaging.ieee.org/author/37288834600), [Yuning Cui](https://www.ce.cit.tum.de/en/air/people/yuning-cui/)* and [Jingyuan Xia](https://www.xiajingyuan.com/)
 
