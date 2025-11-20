@@ -35,19 +35,18 @@
 
 **High-Resolution Path:**
 
-- Horizontal and vertical depthwise convolutions (1×11 and 11×1)
-- Captures local structural information
+- Directionally-decomposed large kernels to efficiently model anisotropic degradations
+- Explicit high-frequency mining using depthwise convolutions to extract fine details
 
 **Low-Resolution Path:**
 
-- Spatial reduction (4× downsampling)
-- Multi-head self-attention
-- Captures global dependencies
+- Self-attention mechanisms for global context understanding
+- Adaptive high-frequency compensation that uses details from the high-res path to counteract the spectral losses caused by downsampling and attention's inherent low-pass filtering
 
 ### Model Statistics
 
 - **Parameters**: ~2.16M
--  **Inference Memory**: <24G for UHD (4K) Images, even smaller for BF16 precision.
+-  **Inference Memory**: <12G for UHD (4K) Images, even smaller for BF16 precision.
 
 ## ✨ Features
 
@@ -55,12 +54,13 @@
 
 | Task | Dataset Code | Dataset | Description |
 |------|--------------|---------|-------------|
+| **Low-Light Enhancement** | `lol4k` | LOL4K | Enhance low-light 4K images |
+| **Low-Light Enhancement** | `uhd-ll` | UHD-LL | Enhance real-wolrd low-light UHD images |
+| **Deraining** | `rain4k` | 4K-Rain | Remove rain streaks from 4K images |
+| **Deraining** | `uhd-rain` | UHD-Rain | Remove rain streaks from 4K images |
 | **Dehazing** | `uhd-haze` | UHD-Haze | Remove haze from UHD images |
 | **Deblurring** | `uhd-blur` | UHD-Blur | Remove blur from UHD images |
-| **Low-Light Enhancement** | `uhd-ll` | UHD-LL | Enhance real-wolrd low-light UHD images |
 | **Snow Removal** | `uhd-snow` | UHD-Snow | Remove snow artifacts from UHD images |
-| **Low-Light Enhancement** | `lol4k` | LOL4K | Enhance low-light 4K images |
-| **Deraining** | `rain4k` | 4K-Rain | Remove rain streaks from 4K images |
 
 - 🚀 **Efficient UHD Processing**: Optimized for 4K and higher resolution images
 - 🎨 **Multi-Task Support**: Handles multiple degradation types
@@ -222,8 +222,6 @@ python test_hiformer.py \
 ## 📊 Results
 
 ### Quantitative Results
-
-<summary><strong>Table</strong> </summary>
 
 <details>
 <summary><strong>Low-light UHD Image Enhancement</strong> (click to expand) </summary>
