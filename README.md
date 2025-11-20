@@ -224,11 +224,11 @@ python test_hiformer.py \
 ### Quantitative Results
 
 <summary><strong>Table</strong> </summary>
-<img src = "../../PaperWriting/HiFormer/figs/1.UHDLOL4k.png"> 
-<img src = "../../PaperWriting/HiFormer/figs/2.UHDRain.png"> 
-<img src = "../../PaperWriting/HiFormer/figs/3.UHDHaze.png"> 
-<img src = "../../PaperWriting/HiFormer/figs/4.UHDBlur.png"> 
-<img src = "../../PaperWriting/HiFormer/figs/5.UHDSnow.png"> 
+<img src = "figs/1.UHDLOL4k.png"> 
+<img src = "figs/2.UHDRain.png"> 
+<img src = "figs/3.UHDHaze.png"> 
+<img src = "figs/4.UHDBlur.png"> 
+<img src = "figs/5.UHDSnow.png"> 
 
 ## 💡 Tips & Tricks
 
