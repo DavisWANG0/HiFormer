@@ -9,11 +9,6 @@ from pdb import set_trace as stx
 import numbers
 
 from einops import rearrange
-import math
-
-
-##########################################################################
-## Layer Norm
 
 def to_3d(x):
     return rearrange(x, 'b c h w -> b (h w) c')
@@ -71,7 +66,7 @@ class LayerNorm(nn.Module):
 
 
 ##########################################################################
-## Gated-Dconv Feed-Forward Network (GDFN)
+## Directional-Separable Gated Feed-Forward in HiFormer
 class FeedForward(nn.Module):
     def __init__(self, dim, ffn_expansion_factor, bias):
         super(FeedForward, self).__init__()
@@ -94,10 +89,10 @@ class FeedForward(nn.Module):
 
 
 ##########################################################################
-## Hybrid Attention Module
-class HybridAttention(nn.Module):
+## Bi-Scale Directional Attention Module in HiFormer
+class HiFormerAttention(nn.Module):
     def __init__(self, dim, num_heads, bias, window_size):
-        super(HybridAttention, self).__init__()
+        super(HiFormerAttention, self).__init__()
         self.num_heads = num_heads
         self.temperature = nn.Parameter(torch.ones(num_heads, 1, 1))
 
@@ -156,13 +151,13 @@ class HybridAttention(nn.Module):
 
 
 ##########################################################################
-## Transformer Block with Hybrid Attention
+## Transformer Block with  HiFormer Attention
 class TransformerBlock(nn.Module):
     def __init__(self, dim, num_heads, ffn_expansion_factor, bias, LayerNorm_type, window_size):
         super(TransformerBlock, self).__init__()
 
         self.norm1 = LayerNorm(dim, LayerNorm_type)
-        self.attn = HybridAttention(dim, num_heads, bias, window_size)
+        self.attn = HiFormerAttention(dim, num_heads, bias, window_size)
         
         self.norm2 = LayerNorm(dim, LayerNorm_type)
         self.ffn = FeedForward(dim, ffn_expansion_factor, bias)
