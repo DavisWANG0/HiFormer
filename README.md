@@ -264,7 +264,7 @@ python train_hiformer.py --use_amp
 If you find this work useful, please cite:
 
 ```bibtex
-@ARTICLE{11260494,
+@ARTICLE{Wu2025HiFormer,
   author={Wu, Chen and Wang, Ling and Zheng, Zhuoran and Jiang, Weidong and Cui, Yuning and Xia, Jingyuan},
   journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
   title={Ultra-High-Definition Image Restoration via High-Frequency Enhanced Transformer}, 
