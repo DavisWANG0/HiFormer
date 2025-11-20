@@ -1,4 +1,4 @@
-# Ultra-High-Definition Image Restoration via High Frequency Enhanced Transformer (T-CSVT 2025)
+# Ultra-High-Definition Image Restoration via High-Frequency Enhanced Transformer (T-CSVT 2025)
 
 [Chen Wu](https://github.com/5chen), [Ling Wang](https://daviswang0.github.io/), [Zhuoran Zheng](https://scholar.google.com.hk/citations?user=pXzPL-sAAAAJ&hl=zh-CN), [Weidong Jiang](https://xplorestaging.ieee.org/author/37288834600), [Yuning Cui](https://www.ce.cit.tum.de/en/air/people/yuning-cui/)* and [Jingyuan Xia](https://www.xiajingyuan.com/)
 
@@ -7,7 +7,7 @@
 
 <hr />
 
-> **Abstract:** *HiFormer is a dual-branch Transformer architecture designed for Ultra-High-Definition (UHD) image restoration. It combines a high-resolution branch that preserves fine details using directionally-sensitive large-kernel convolutions with a low-resolution branch that models global context via self-attention. This collaboration effectively compensates for high-frequency losses caused by downsampling and attention mechanisms, enabling efficient and high-fidelity restoration on consumer-grade GPUs.* 
+> **Abstract:** *Transformer-based architectures exhibit substantial promise in the realm of ultra-high-definition (UHD) image restoration (IR). Nevertheless, they encounter significant challenges in maintaining high-frequency (HF) details, which are crucial for the reconstruction of texture. Conventional methods tackle computational complexity by significantly reducing the resolution (by a factor of 4 to 8). Moreover, the majority of high-frequency components are eliminated due to the inherent characteristics of self-attention mechanisms, as these mechanisms tend to naturally suppress high-frequency elements during non-local feature integration. This paper proposes a dual-branch transformer architecture that synergistically combines native-resolution HF preservation with efficient contextual modeling, named HiFormer. The high-resolution branch utilizes a directionally-sensitive large-kernel decomposition to effectively address anisotropic degradations with fewer parameters and applies depthwise separable convolutions for localized high-frequency (HF) information extraction. Concurrently, the low-resolution branch assimilates these localized HF elements using adaptive channel modulation to offset spectral losses induced by the inherent smoothing effect of self-attention. Comprehensive experiments across numerous UHD image restoration tasks reveal that our approach surpasses current leading methods in both quantitative metrics and qualitative analysis.* 
 
 <hr />
 
@@ -35,19 +35,18 @@
 
 **High-Resolution Path:**
 
-- Horizontal and vertical depthwise convolutions (1×11 and 11×1)
-- Captures local structural information
+- Directionally-decomposed large kernels to efficiently model anisotropic degradations
+- Explicit high-frequency mining using depthwise convolutions to extract fine details
 
 **Low-Resolution Path:**
 
-- Spatial reduction (4× downsampling)
-- Multi-head self-attention
-- Captures global dependencies
+- Self-attention mechanisms for global context understanding
+- Adaptive high-frequency compensation that uses details from the high-res path to counteract the spectral losses caused by downsampling and attention's inherent low-pass filtering
 
 ### Model Statistics
 
 - **Parameters**: ~2.16M
--  **Inference Memory**: <24G for UHD (4K) Images, even smaller for BF16 precision.
+-  **Inference Memory**: <12G for UHD (4K) Images, even smaller for BF16 precision.
 
 ## ✨ Features
 
@@ -55,12 +54,13 @@
 
 | Task | Dataset Code | Dataset | Description |
 |------|--------------|---------|-------------|
+| **Low-Light Enhancement** | `lol4k` | UHD-LOL4K | Enhance low-light 4K images |
+| **Low-Light Enhancement** | `uhd-ll` | UHD-LL | Enhance real-wolrd low-light UHD images |
+| **Deraining** | `rain4k` | 4K-Rain13k | Remove rain streaks from 4K images |
+| **Deraining** | `uhd-rain` | UHD-Rain | Remove rain streaks from 4K images |
 | **Dehazing** | `uhd-haze` | UHD-Haze | Remove haze from UHD images |
 | **Deblurring** | `uhd-blur` | UHD-Blur | Remove blur from UHD images |
-| **Low-Light Enhancement** | `uhd-ll` | UHD-LL | Enhance real-wolrd low-light UHD images |
 | **Snow Removal** | `uhd-snow` | UHD-Snow | Remove snow artifacts from UHD images |
-| **Low-Light Enhancement** | `lol4k` | LOL4K | Enhance low-light 4K images |
-| **Deraining** | `rain4k` | 4K-Rain | Remove rain streaks from 4K images |
 
 - 🚀 **Efficient UHD Processing**: Optimized for 4K and higher resolution images
 - 🎨 **Multi-Task Support**: Handles multiple degradation types
@@ -252,8 +252,6 @@ python demo_hiformer.py \
 ## 📊 Results
 
 ### Quantitative Results
-
-<summary><strong>Table</strong> </summary>
 
 <details>
 <summary><strong>Low-light UHD Image Enhancement</strong> (click to expand) </summary>
