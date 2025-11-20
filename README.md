@@ -224,11 +224,36 @@ python test_hiformer.py \
 ### Quantitative Results
 
 <summary><strong>Table</strong> </summary>
+
+<details>
+<summary><strong>Low-light UHD Image Enhancement</strong> (click to expand) </summary>
+<p align='center'>
 <img src = "figs/1.UHDLOL4k.png"> 
-<img src = "figs/2.UHDRain.png"> 
-<img src = "figs/3.UHDHaze.png"> 
-<img src = "figs/4.UHDBlur.png"> 
-<img src = "figs/5.UHDSnow.png"> 
+</details>
+
+<details>
+<summary><strong>UHD Image Deraining</strong> (click to expand) </summary>
+<p align='center'>
+<img src = "figs/2.UHDRain.png">  
+</details>
+
+<details>
+<summary><strong>UHD Image Dehazing</strong> (click to expand) </summary>
+<p align='center'>
+<img src = "figs/3.UHDHaze.png">  
+</details>
+
+<details>
+<summary><strong>UHD Image Debluring</strong> (click to expand) </summary>
+<p align='center'>
+<img src = "figs/4.UHDBlur.png">  
+</details>
+
+<details>
+<summary><strong>UHD Image Desnowing</strong> (click to expand) </summary>
+<p align='center'>
+<img src = "figs/5.UHDSnow.png">  
+</details>
 
 ## 💡 Tips & Tricks
 
