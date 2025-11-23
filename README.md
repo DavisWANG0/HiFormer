@@ -2,7 +2,7 @@
 
 [Chen Wu](https://github.com/5chen), [Ling Wang](https://daviswang0.github.io/), [Zhuoran Zheng](https://scholar.google.com.hk/citations?user=pXzPL-sAAAAJ&hl=zh-CN), [Weidong Jiang](https://xplorestaging.ieee.org/author/37288834600), [Yuning Cui](https://www.ce.cit.tum.de/en/air/people/yuning-cui/)* and [Jingyuan Xia](https://www.xiajingyuan.com/)
 
-<!-- [![paper](https://img.shields.io/badge/arXiv-Paper-<COLOR>.svg)](https://arxiv.org/abs/2306.13090) -->
+[![paper](https://img.shields.io/badge/IEEE-Paper-00629B.svg)](https://ieeexplore.ieee.org/document/11263975)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 <hr />
@@ -317,14 +317,15 @@ python train_hiformer.py --use_amp
 If you find this work useful, please cite:
 
 ```bibtex
-@ARTICLE{Wu2025HiFormer,
+@ARTICLE{11263975,
   author={Wu, Chen and Wang, Ling and Zheng, Zhuoran and Jiang, Weidong and Cui, Yuning and Xia, Jingyuan},
   journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
   title={Ultra-High-Definition Image Restoration via High-Frequency Enhanced Transformer}, 
   year={2025},
   volume={},
   number={},
-  pages={},
+  pages={1-1},
+  keywords={Image restoration;Transformers;MODFETs;HEMTs;High frequency;Degradation;Frequency-domain analysis;Faces;Computational modeling;Videos;Image restoration;UHD image;frequency learning;Transformer},
   doi={10.1109/TCSVT.2025.3636011}
 }
 ```
